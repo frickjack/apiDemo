@@ -1,0 +1,12 @@
+build/
+dist/
+**/nbproject/private/
+target/
+.gradle/
+gradle/
+*~
+*.old
+*.bak
+*.swp
+*.log
+.nb-gradle/
