@@ -1,5 +1,18 @@
-Guaranteed Rate Homework
+API Service Demo
 =============================
+
+TL;DR
+----------------
+A simple illustration of a nodejs (via typescript) API service.  Spec below.
+
+Build and Run
+----------------
+
+    npm install
+    npm install -g gulp
+    gulp
+    node build/server.js
+
 
 Spec
 ----------------

@@ -1,20 +1,15 @@
-var gulp = require('gulp');
-var del = require('del');
-var ts = require('gulp-typescript');
-var sourcemaps = require('gulp-sourcemaps');
+const gulp = require('gulp');
+const del = require('del');
+const ts = require('gulp-typescript');
+const sourcemaps = require('gulp-sourcemaps');
+const jasmine = require('gulp-jasmine');
+ 
+gulp.task('jasmine', ['compile'], () => {
+    gulp.src('build/test/*.js')
+        // gulp-jasmine works on filepaths so you can't have any plugins before it 
+        .pipe(jasmine());
+});
 
-
-// register markdown support with nunjucks
-var nunjucksManageEnv = function(env) {
-    // The second argument can be any function that renders markdown 
-    markdown.register(env, marked);
-};
-
-//var env = new nunjucks.Environment(new nunjucks.FileSystemLoader("."));
-//markdown.register(env, marked);
-
-//var tsProject = ts.createProject("tsconfig.json");
-//var watch = require( 'gulp-watch' );
 
 
 gulp.task('clean', [], function() {
@@ -24,11 +19,13 @@ gulp.task('clean', [], function() {
 });
 
 
-var tsConfig = {
+const tsConfig = {
     //noImplicitAny: true,
     target: "es6",
-    sourceMap: true
-    // declaration: true
+    sourceMap: true,
+    module: "commonjs"
+    // declaration: true,
+
 };
 
 gulp.task( 'compilets', [], function() {
@@ -49,7 +46,7 @@ gulp.task('compile', [ 'compilets' ], function() {
   //gulp.src( "web/**/*" ).pipe( gulp.dest( "build/" ) );
 });
 
-gulp.task('default', [ 'compile' ], function() {
+gulp.task('default', [ 'jasmine' ], function() {
   // place code for your default task here
   //console.log( "Hello, World!" );
   //gulp.src( "web/**/*" ).pipe( gulp.dest( "build/" ) );
