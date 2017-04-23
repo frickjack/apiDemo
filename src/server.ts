@@ -11,12 +11,14 @@ app.post( "/records", bodyParser.json(), function(req,res) {
     const rec = api.RecordFactory.objectToRecord( req.body );
     if ( ! rec ) {
         res.status( 400 );
-        res.setHeader( "Content-Type", "text/plain" );
-        res.write( "Invalid record" );
-        res.end();
+        res.setHeader( "Content-Type", "application/json" );
+        res.json( {} );
         return;
     }
+    //console.log( "Adding record", rec );
     service.addRecord( rec );
+    res.status(200);
+    res.json( {} );
 });
 
 app.get( "/records/:orderBy", function(req,res) {
