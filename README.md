@@ -10,21 +10,14 @@ Build and Run
 
     npm install
     npm install -g gulp
-    gulp
+    gulp compile
     node build/server.js
+    gulp jasmine
+    node build/cli.js
 
 
 Spec
 ----------------
-
-
-### Rules and Guidelines
-
-We will be looking at the readability and cleanliness of your code.
-Provide unit tests. The cleanliness and readability of tests is just as important as your production code.
-Please provide 80% test coverage for your code.
-Think simple. Readability and modularity are better than being clever.
-Make a github repository and commit your work in small cohesive chunks.
 
 ### Step 1 - Build a system to parse and sort a set of records
 
